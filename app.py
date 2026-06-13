@@ -41,15 +41,28 @@ fig1 = go.Figure(g1)
 
 # 【修正2】日付の区切りをスラッシュからハイフンに変更
 # 縦線とキャプションを追加
+# ハーフマラソン練習開始
 fig1.add_vline(
     x="2026-01-15 12:00:00", 
     line_width=2, 
     line_dash="dash", 
-    line_color="red",
-    annotation_text="ハーフマラソン練習開始",          # 表示するテキスト
+    line_color="yellow",
+    annotation_text="ランニング開始",          # 表示するテキスト
     annotation_position="top right",               # テキストの位置 (右上)
     annotation_textangle=-90,                      # テキストの角度 (縦書き)
-    annotation_font_color="red"                    # テキストの色
+    annotation_font_color="yellow"                    # テキストの色
+)
+
+# ヒルクライム
+fig1.add_vline(
+    x="2026-06-10 12:00:00", 
+    line_width=2, 
+    line_dash="dash",
+    line_color="green",
+    annotation_text="ヒルクライム開始",          # 表示するテキスト
+    annotation_position="top right",               # テキストの位置 (右上)
+    annotation_textangle=-90,                      # テキストの角度 (縦書き)
+    annotation_font_color="green"                    # テキストの色
 )
 
 st.plotly_chart(fig1)
