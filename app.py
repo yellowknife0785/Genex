@@ -36,8 +36,16 @@ g1 = px.scatter(
     color="測定タイミング",
     title="Date vs " + y_axis,
 )
-
 fig1 = go.Figure(g1)
+# 凡例をグラフ内の左下に配置
+fig1.update_layout(
+    legend=dict(
+        xanchor="left",  # 凡例ボックスの「左端」を基準にする
+        x=0.05,           # グラフ右端（1.0）の内側に配置
+        yanchor="bottom", # 凡例ボックスの「下端」を基準にする
+        y=0.1            # グラフ下端（0.0）の内側に配置
+    )
+)
 
 # 【修正2】日付の区切りをスラッシュからハイフンに変更
 # 縦線とキャプションを追加
