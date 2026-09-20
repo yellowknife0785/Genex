@@ -25,11 +25,11 @@ y_axis = st.selectbox("Y軸", items)
 
 df_g = df_m[df_m["item"] == y_axis]
 
-g1 = px.scatter(
+g1 = px.line(
     df_g,
     x="Date",
     y='value',
-    color="測定タイミング",
+    markers = "True",
     title="Date vs " + y_axis,
 )
 fig1 = go.Figure(g1)
@@ -58,16 +58,16 @@ fig1.add_vline(
 )
 
 # ヒルクライム
-fig1.add_vline(
-    x="2026-06-10 12:00:00", 
-    line_width=2, 
-    line_dash="dash",
-    line_color="green",
-    annotation_text="ヒルクライム開始",          # 表示するテキスト
-    annotation_position="top right",               # テキストの位置 (右上)
-    annotation_textangle=-90,                      # テキストの角度 (縦書き)
-    annotation_font_color="green"                    # テキストの色
-)
+# fig1.add_vline(
+#     x="2026-06-10 12:00:00", 
+#     line_width=2, 
+#     line_dash="dash",
+#     line_color="green",
+#     annotation_text="ヒルクライム開始",          # 表示するテキスト
+#     annotation_position="top right",               # テキストの位置 (右上)
+#     annotation_textangle=-90,                      # テキストの角度 (縦書き)
+#     annotation_font_color="green"                    # テキストの色
+# )
 
 st.plotly_chart(fig1)
 
