@@ -15,17 +15,13 @@ df_m = pd.melt(
     value_name = "value"
 )
 
-import streamlit as st
-import plotly.express as px
-import plotly.graph_objects as go
-import pandas as pd
-
 # 【修正1】Date列を明示的に日時（datetime）型に変換
 df_m["Date"] = pd.to_datetime(df_m["Date"])
 
-st.sidebar.header("時系列グラフ設定")
 items = df_m["item"].unique()
-y_axis = st.sidebar.selectbox("Y軸", items)
+# st.sidebar.header("時系列グラフ設定")
+# y_axis = st.sidebar.selectbox("Y軸", items)
+y_axis = st.selectbox("Y軸", items)
 
 df_g = df_m[df_m["item"] == y_axis]
 
@@ -76,17 +72,17 @@ fig1.add_vline(
 st.plotly_chart(fig1)
 
 
-# 数値型の列名のみを抽出（散布図の軸用）
-numeric_columns = df.select_dtypes(include='number').columns.tolist()
-# サイドバーにドロップダウンを表示
-st.sidebar.header("相関グラフ設定")
-corr_x_axis = st.sidebar.selectbox("X", numeric_columns)
-corr_y_axis = st.sidebar.selectbox("Y", numeric_columns)
+# # 数値型の列名のみを抽出（散布図の軸用）
+# numeric_columns = df.select_dtypes(include='number').columns.tolist()
+# # サイドバーにドロップダウンを表示
+# st.sidebar.header("相関グラフ設定")
+# corr_x_axis = st.sidebar.selectbox("X", numeric_columns)
+# corr_y_axis = st.sidebar.selectbox("Y", numeric_columns)
 
-g2 = px.scatter(
-    df,
-    x = corr_x_axis,
-    y = corr_y_axis,
-)
-fig2 = go.Figure(g2)
-st.plotly_chart(fig2)
+# g2 = px.scatter(
+#     df,
+#     x = corr_x_axis,
+#     y = corr_y_axis,
+# )
+# fig2 = go.Figure(g2)
+# st.plotly_chart(fig2)
